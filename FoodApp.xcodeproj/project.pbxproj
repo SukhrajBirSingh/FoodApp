@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4ABC357B22587CD4019EA7B1 /* Pods_FoodAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827A6818C1F90926CA9487FB /* Pods_FoodAppTests.framework */; };
 		5469D80BC8A826735B8F43D2 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0F5362F8A3BCC3E5BC734 /* Pods_FoodApp.framework */; };
+		8449441E27BC010A0044F315 /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8449441D27BC010A0044F315 /* DishDetailViewController.swift */; };
 		84B0F68727B6442A00CE92FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0F68627B6442A00CE92FC /* AppDelegate.swift */; };
 		84B0F68927B6442A00CE92FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0F68827B6442A00CE92FC /* SceneDelegate.swift */; };
 		84B0F68E27B6442A00CE92FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B0F68C27B6442A00CE92FC /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		6C749102A657CA3680038B11 /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7EC5A67F193E319B5EB43F58 /* Pods-FoodApp-FoodAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp-FoodAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodApp-FoodAppUITests/Pods-FoodApp-FoodAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		827A6818C1F90926CA9487FB /* Pods_FoodAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8449441D27BC010A0044F315 /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		84B0F68327B6442A00CE92FC /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B0F68627B6442A00CE92FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B0F68827B6442A00CE92FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 				827A6818C1F90926CA9487FB /* Pods_FoodAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8449441C27BC00D80044F315 /* DishDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8449441D27BC010A0044F315 /* DishDetailViewController.swift */,
+			);
+			path = DishDetail;
 			sourceTree = "<group>";
 		};
 		84B0F67A27B6442A00CE92FC = {
@@ -198,6 +208,7 @@
 		84B0F6B727B6488700CE92FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8449441C27BC00D80044F315 /* DishDetail */,
 				84B0F6C327BAA6BF00CE92FC /* Home */,
 				84B0F6B927B648AB00CE92FC /* Onboarding */,
 			);
@@ -545,6 +556,7 @@
 				84B0F68727B6442A00CE92FC /* AppDelegate.swift in Sources */,
 				84B0F68927B6442A00CE92FC /* SceneDelegate.swift in Sources */,
 				84B0F6BE27B64D7800CE92FC /* UIViewExtension.swift in Sources */,
+				8449441E27BC010A0044F315 /* DishDetailViewController.swift in Sources */,
 				84B0F6BB27B648DC00CE92FC /* OnboardingViewController.swift in Sources */,
 				84B0F6C527BAA6EB00CE92FC /* HomeViewController.swift in Sources */,
 				84B0F6DD27BAECFE00CE92FC /* DishLandscapeCollectionViewCell.swift in Sources */,
