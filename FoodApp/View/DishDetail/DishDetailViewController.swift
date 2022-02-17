@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class DishDetailViewController: UIViewController {
+
+    //var heart : Bool = false
 
     
     @IBOutlet weak var dishImageView: UIImageView!
@@ -20,13 +23,56 @@ class DishDetailViewController: UIViewController {
     
     @IBOutlet weak var nameField: UITextField!
     
+    @IBOutlet weak var favButton: UIButton!
+   
+    
+    var dish : Dish!
+
+
+    
+    @IBAction func favButtonPressed(_ sender: UIButton) {
+        dish.fav! = !dish.fav!
+        if dish.fav! {
+            favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
+        }else{
+            favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        
+    }
+    
     
     @IBAction func placeOrderButtonPressed(_ sender: UIButton) {
+        
+        guard let name = nameField.text?.trimmingCharacters(in: .whitespaces), !name.isEmpty else {
+            ProgressHUD.showError("Please enter your name")
+            return
+        }
+        ProgressHUD.show("Placing Order...")
+        NetworkService.shared.placeOrder(dishId: dish.id ?? "", name: name) { (result) in
+            switch result {
+                
+            case .success(_):
+                ProgressHUD.showSuccess("Your order has been received.👨🏻‍🍳")
+            case .failure(let error):
+                ProgressHUD.showError(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    
+    
+    private func populateView(){
+        dishImageView.kf.setImage(with: dish.image?.asUrl)
+        titleLabel.text = dish.name
+        caloriesLabel.text = dish.formattedCalories
+        descriptionLabel.text = dish.description
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        populateView()
         // Do any additional setup after loading the view.
     }
     

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import ProgressHUD
 class HomeViewController: UIViewController {
    
 
@@ -17,34 +17,51 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var chefCollectionView: UICollectionView!
     
+    @IBAction func favButtonPressed(_ sender: UIBarButtonItem) {
+        let controller = FavDishesViewController.instantiate()
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
+    
     var categories : [DishCategory] = [
-        .init(id: "id1", name: "Africa Dish", image: "https://picsum.photos/100/200"),
-        .init(id: "id1", name: "Africa Dish2", image: "https://picsum.photos/100/200"),
-        .init(id: "id1", name: "Africa Dish3", image: "https://picsum.photos/100/200"),
-        .init(id: "id1", name: "Africa Dish4", image: "https://picsum.photos/100/200"),
-        .init(id: "id1", name: "Africa Dish5", image: "https://picsum.photos/100/200")
+        
     ]
     
     var populars : [Dish] = [
     
-        .init(id: "id1", name: "kaddi", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 240),
-        .init(id: "id1", name: "kaddu", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 440),
-        .init(id: "id1", name: "shahi paneer", description: "paneer with gravy of cream", image: "https://picsum.photos/100/200", calories: 230)
-        
         
     ]
     
     var chef : [Dish] = [
     
-        .init(id: "id1", name: "kaddi", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 240),
-        .init(id: "id1", name: "kaddu", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 440),
-        .init(id: "id1", name: "shahi paneer", description: "paneer with gravy of cream", image: "https://picsum.photos/100/200", calories: 230)
-        
-        
+    
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ProgressHUD.show()
+        NetworkService.shared.fetchAllCategories(completion: { [weak self](result) in
+            
+            switch result {
+                
+            case .success(let allDishes):
+                ProgressHUD.dismiss()
+                self?.categories = allDishes.categories ?? []
+                self?.populars = allDishes.populars ?? []
+                self?.chef = allDishes.specials ?? []
+                
+                self?.categoryCollectionView.reloadData()
+                self?.popularCollectionView.reloadData()
+                self?.chefCollectionView.reloadData()
+                
+            case .failure(let error):
+                ProgressHUD.showError("The error is: \(error.localizedDescription)")
+            }
+        })
+        
+        
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
         
@@ -72,10 +89,31 @@ class HomeViewController: UIViewController {
 
 }
 
+
+//MARK: - UICollectionViewDelegate Methods
+
 extension HomeViewController : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == categoryCollectionView{
+            let controller = ListDishesViewController.instantiate()
+            
+            controller.category = categories[indexPath.row]
+            
+            navigationController?.pushViewController(controller, animated: true)
+            
+        }else {
+            let controller = DishDetailViewController.instantiate()
+            //sending what item is selected
+            controller.dish = collectionView == popularCollectionView ? populars[indexPath.row] : chef[indexPath.row]
+            
+            navigationController?.pushViewController(controller, animated: true)
+        }
     
 }
+}
 
+
+//MARK: - UICollectionView DataSource Methods
 extension HomeViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {

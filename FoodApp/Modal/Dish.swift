@@ -6,9 +6,10 @@
 //
 
 import Foundation
-struct Dish {
+struct Dish: Codable {
     let id, name, description, image : String?
     let calories: Int?
+    var fav : Bool? = false
     
     var formattedCalories : String {
         return "\(calories ?? 0) calories"
