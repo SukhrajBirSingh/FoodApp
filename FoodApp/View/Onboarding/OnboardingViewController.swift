@@ -33,6 +33,9 @@ class OnboardingViewController: UIViewController {
             let controller = storyboard?.instantiateViewController(withIdentifier: "HomeNC") as! UINavigationController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .flipHorizontal
+            //setting user has onborded to true
+            UserDefaults.standard.hasOnboarded = true
+            
             present(controller, animated: true, completion: nil)
             
             
@@ -62,7 +65,7 @@ class OnboardingViewController: UIViewController {
             OnboardingSlide(title: "Instant World-Wide Delivery", description: "Your orders will be delivered instantly irrespective of your location around the world", image: UIImage(named: "slide3")!)
         ]
         
-        pageControl.numberOfPages = slides.count// Do any additional setup after loading the view.
+        pageControl.numberOfPages = slides.count
     }
     
 }

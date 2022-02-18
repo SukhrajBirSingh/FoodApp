@@ -11,16 +11,29 @@ struct NetworkService {
     
     static let shared = NetworkService()
     private init(){}
+    
+    //func to fetch all categories present in backend
     func fetchAllCategories(completion : @escaping(Result<AllDishes,Error>)->Void) {
         request(route: .fetchAllCategories, method: .get,
                 completion: completion)
     }
     
+    //func to place order 
     func placeOrder(dishId: String, name : String , completion: @escaping(Result<Order, Error>)-> Void){
         let params = ["name" : name]
         
         request(route: .placeOrder(dishId), method: .post, parameters: params, completion: completion)
         
+    }
+    
+    
+    func fetchCategoryDishes(categoryId : String, completion : @escaping(Result<[Dish], Error>)-> Void){
+        request(route: .fetchcategoryDishes(categoryId), method: .get, completion: completion)
+    }
+    
+    
+    func fetchOrders(completion: @escaping(Result<[Order], Error>)-> Void){
+        request(route: .fetchOrders, method: .get, completion: completion)
     }
     
     //func to make network request
