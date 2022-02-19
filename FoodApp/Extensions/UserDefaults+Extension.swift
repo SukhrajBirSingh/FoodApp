@@ -10,6 +10,7 @@ import Foundation
 extension UserDefaults {
     private enum UserDefaultsKeys : String {
         case hasOnboarded
+        case isfav
     }
     
     var hasOnboarded : Bool {
@@ -18,6 +19,14 @@ extension UserDefaults {
             
         }set{
             setValue(newValue, forKey: UserDefaultsKeys.hasOnboarded.rawValue)
+        }
+    }
+    
+    var isfav : Bool {
+        get {
+            bool(forKey: UserDefaultsKeys.isfav.rawValue)
+        }set{
+            setValue(newValue, forKey: UserDefaultsKeys.isfav.rawValue)
         }
     }
 }

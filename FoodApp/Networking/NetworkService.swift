@@ -18,6 +18,8 @@ struct NetworkService {
                 completion: completion)
     }
     
+        
+    
     //func to place order 
     func placeOrder(dishId: String, name : String , completion: @escaping(Result<Order, Error>)-> Void){
         let params = ["name" : name]

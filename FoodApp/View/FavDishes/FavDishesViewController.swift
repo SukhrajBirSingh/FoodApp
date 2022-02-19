@@ -9,11 +9,13 @@ import UIKit
 
 class FavDishesViewController: UIViewController {
     
-    var favDishes : [Dish] = [
-        .init(id: "id1", name: "kaddi", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 240),
-        .init(id: "id1", name: "kaddu", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 440),
-        .init(id: "id1", name: "shahi paneer", description: "paneer with gravy of cream", image: "https://picsum.photos/100/200", calories: 230)
-    ]
+//    var favDishes : [Dish] = [
+//        .init(id: "id1", name: "kaddi", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 240),
+//        .init(id: "id1", name: "kaddu", description: "patatoes with gravy of besan", image: "https://picsum.photos/100/200", calories: 440),
+//        .init(id: "id1", name: "shahi paneer", description: "paneer with gravy of cream", image: "https://picsum.photos/100/200", calories: 230)
+//    ]
+    
+    let favDishes = favDish
     
     @IBOutlet weak var favTableView: UITableView!
     
@@ -31,9 +33,9 @@ class FavDishesViewController: UIViewController {
     }
     
     
-
-
 }
+
+
 
 //MARK: - UITableView Delegate Methods
 extension FavDishesViewController : UITableViewDelegate {

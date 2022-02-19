@@ -8,9 +8,12 @@
 import UIKit
 import ProgressHUD
 
+var favDish = [Dish]()
+
+
 class DishDetailViewController: UIViewController {
 
-    //var heart : Bool = false
+    var heart : Bool = false
 
     
     @IBOutlet weak var dishImageView: UIImageView!
@@ -31,12 +34,14 @@ class DishDetailViewController: UIViewController {
 
     
     @IBAction func favButtonPressed(_ sender: UIButton) {
-        dish.fav! = !dish.fav!
-        if dish.fav! {
+        heart = !heart
+        if heart {
             favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            favDish.append(dish)
 
         }else{
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            
         }
         
     }
