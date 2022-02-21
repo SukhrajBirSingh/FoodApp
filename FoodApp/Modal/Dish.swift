@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Dish: Codable {
+struct Dish: Codable, Equatable {
     let id, name, description, image : String?
     let calories: Int?
     var fav : Bool? = false

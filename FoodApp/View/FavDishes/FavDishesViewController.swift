@@ -21,6 +21,7 @@ class FavDishesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Favorites"
         favTableView.delegate = self
         favTableView.dataSource = self
         registerCells()

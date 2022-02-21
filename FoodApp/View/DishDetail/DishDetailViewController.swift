@@ -14,23 +14,36 @@ var favDish = [Dish]()
 class DishDetailViewController: UIViewController {
 
     var heart : Bool = false
-
     
     @IBOutlet weak var dishImageView: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var caloriesLabel: UILabel!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var nameField: UITextField!
-    
     @IBOutlet weak var favButton: UIButton!
    
+    override func viewWillAppear(_ animated: Bool) {
+        heartResult()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        populateView()
+        // Do any additional setup after loading the view.
+    }
     
     var dish : Dish!
-
+    
+    func heartResult() {
+        
+        if favDish.contains(dish){
+            favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            heart = true
+        } else {
+            favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            heart = false
+        }
+    }
 
     
     @IBAction func favButtonPressed(_ sender: UIButton) {
@@ -38,12 +51,11 @@ class DishDetailViewController: UIViewController {
         if heart {
             favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             favDish.append(dish)
-
-        }else{
+         }else{
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            
+            if let index = favDish.firstIndex(of: dish)
+            {favDish.remove(at: index)}
         }
-        
     }
     
     
@@ -75,12 +87,4 @@ class DishDetailViewController: UIViewController {
         descriptionLabel.text = dish.description
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        populateView()
-        // Do any additional setup after loading the view.
-    }
-    
-
-
 }
