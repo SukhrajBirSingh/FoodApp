@@ -3,7 +3,7 @@
 An app that gives a description of different dishes. You can even place an order and view your orders.
 
 
-**What I learned**
+**What I learned**\
 •	Implementing collection view, horizontal scroll design.\
 •	Created custom views using .xib files to modify native design components.\
 •	Embedded View Controllers in a Navigation Controller.\
