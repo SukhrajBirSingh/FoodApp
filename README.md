@@ -1,6 +1,6 @@
 # FoodApp
 
-An app that gives a description of different dishes. You can even place an order and view your orders.
+A beautiful food app that gives a description of different dishes. You can even place an order and view your orders.
 
 
 **What I learned**\
