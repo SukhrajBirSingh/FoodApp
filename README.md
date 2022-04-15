@@ -4,8 +4,7 @@ A beautiful food app that gives a description of different dishes. You can even 
 
 # Technologies
 The project is built using:
-* Swift 5
-* Xcode Version 13.2.1 
+* Swift 5 
 * Kingfisher
 * ProgressHUD
 * IQKeyboardManagerSwift
